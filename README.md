@@ -1,7 +1,7 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # React To-Dos App
-This is a todo application written using the React library.
+This is a to-dos application written using the React library.
 
 ## Built With
 This project was bootstrapped with <code>create-react-app</code> CLI tool.
