@@ -6,6 +6,9 @@ This is a to-dos application written using the React library.
 ## Built With
 This project was bootstrapped with <code>create-react-app</code> CLI tool.
 
+## Live Demo
+This project is live on [Github Pages](https://dj-mrjay.github.io/react-todo-app).
+
 ## Getting Started
 To get a local copy up and running follow these simple steps.
 In the project directory, run:
