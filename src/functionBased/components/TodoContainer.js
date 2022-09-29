@@ -1,63 +1,65 @@
-import React, { useState, useEffect } from "react"
-import Header from "./Header"
-import InputTodo from "./InputTodo"
-import TodosList from "./TodosList"
-import { v4 as uuidv4 } from "uuid"
-import { Route, Routes } from "react-router-dom"
-import About from "../../pages/About"
-import NotMatch from "../../pages/NotMatch"
-import Navbar from "./Navbar"
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+
+import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { Route, Routes } from 'react-router-dom';
+import Header from './Header';
+import InputTodo from './InputTodo';
+import TodosList from './TodosList';
+import About from '../../pages/About';
+import NotMatch from '../../pages/NotMatch';
+import Navbar from './Navbar';
 
 const TodoContainer = () => {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([]);
 
-  const handleChange = id => {
-    setTodos(prevState =>
-      prevState.map(todo => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          }
-        }
-        return todo
-      })
-    )
-  }
+  const handleChange = (id) => {
+    setTodos((prevState) => prevState.map((todo) => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      }
+      return todo;
+    }));
+  };
 
-  const delTodo = id => {
+  const delTodo = (id) => {
     setTodos([
-      ...todos.filter(todo => {
-        return todo.id !== id
-      }),
-    ])
-  }
+      ...todos.filter((todo) => todo.id !== id),
+    ]);
+  };
 
-  const addTodoItem = title => {
+  const addTodoItem = (title) => {
     const newTodo = {
       id: uuidv4(),
-      title: title,
+      title,
       completed: false,
-    }
-    setTodos([...todos, newTodo])
-  }
+    };
+    setTodos([...todos, newTodo]);
+  };
 
   const setUpdate = (updatedTitle, id) => {
     setTodos(
-      todos.map(todo => {
+      todos.map((todo) => {
         if (todo.id === id) {
-          todo.title = updatedTitle
+          return {
+            ...todo,
+            title: updatedTitle,
+          };
         }
-        return todo
-      })
-    )
-  }
+        return todo;
+      }),
+    );
+  };
 
   useEffect(() => {
     // storing todos items
-    const temp = JSON.stringify(todos)
-    localStorage.setItem("todos", temp)
-  }, [todos])
+    const temp = JSON.stringify(todos);
+    localStorage.setItem('todos', temp);
+  }, [todos]);
 
   return (
     <>
@@ -85,6 +87,6 @@ const TodoContainer = () => {
       </Routes>
     </>
   );
-}
+};
 
-export default TodoContainer
+export default TodoContainer;
